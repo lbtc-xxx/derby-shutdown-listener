@@ -38,7 +38,8 @@ public class DerbyShutdownLifecycleListener implements LifecycleListener {
                 log.log(Level.FINEST, "Derby shutdown exception", e);
                 return;
             }
-            log.log(Level.SEVERE, "Derby shutdown failed", e);
+            log.log(Level.INFO, "Derby shutdown failed or may not yet loaded. message: {0}", e.getMessage());
+            log.log(Level.FINER, "Derby shutdown failed", e);
         } finally {
             if (cn != null) {
                 try {
